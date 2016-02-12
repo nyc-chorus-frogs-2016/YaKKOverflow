@@ -24,7 +24,7 @@ ul {
     padding: 0;
 }
 
-li {
+/*li {
     display: inline;
 }
 
@@ -40,7 +40,7 @@ li a {
 li a:hover {
     background-color: #111;
 }
-
+*/
 #logo {
     padding: 50px 0 50px 0;
     overflow: hidden;

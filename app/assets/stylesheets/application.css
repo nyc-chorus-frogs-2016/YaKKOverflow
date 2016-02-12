@@ -16,6 +16,7 @@
 
 body{
   font-family: 'Open Sans', sans-serif;
+  margin: 20px;
 }
 
 ul {
@@ -28,66 +29,13 @@ ul {
 #question-response-form, .answer-response-form {
   display: none;
 }
-/*li {
-    display: inline;
-}
 
-li a {
-    display: inline;
-    background-color: black;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
 
-li a:hover {
-    background-color: #111;
-}
-*/
 #logo {
     padding: 50px 0 50px 0;
     overflow: hidden;
     background-repeat: no-repeat;
     height:70px;
-}
-
-#sign-up-button,
-button,
-
-input[type='reset'],
-input[type='submit'] {
-  background-color: #e57111;
-  border-radius: 0.3rem;
-  color: #eeeeee;
-  cursor: pointer;
-  display: inline-block;
-  font-size: 1.0rem;
-  font-weight: 550;
-  height: 3.3rem;
-  letter-spacing: 0.1rem;
-  line-height: 3.8rem;
-  text-align: center;
-  text-decoration: none;
-  text-transform: uppercase;
-  width: 20rem;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-.button:hover, .button:focus,
-button:hover,
-button:focus,
-input[type='button']:hover,
-input[type='button']:focus,
-input[type='reset']:hover,
-input[type='reset']:focus,
-input[type='submit']:hover,
-input[type='submit']:focus {
-  background-color: #606c76;
-  border-color: #606c76;
-  color: #ffffff;
-  outline: 0;
 }
 
 #index-subheader{
@@ -116,27 +64,24 @@ input[type='submit']:focus {
 }
 
 .button,
-button,
-
-input[type='reset'],
-input[type='submit'] {
+button {
   background-color: #eeeeee;
   border: 0.1rem solid #ffffff;
-  border-radius: 0.4rem;
-  box-sizing: border-box;
+  border-radius: 0.3rem;
   color: #333333;
   cursor: pointer;
   display: inline-block;
-  font-size: 1.1rem;
-  font-weight: 700;
-  height: 3.8rem;
+  font-size: 0.8rem;
+  font-weight: 400;
+  height: 2.8rem;
   letter-spacing: 0.1rem;
-  line-height: 3.8rem;
+  line-height: 2.8rem;
   padding: 0 1rem;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
   white-space: nowrap;
+  margin: 5px;
 }
 .button:hover, .button:focus,
 button:hover,
@@ -153,40 +98,3 @@ input[type='submit']:focus {
   outline: 0;
 }
 
-.button,
-button,
-
-input[type='reset'],
-input[type='submit'] {
-  background-color: #eeeeee;
-  border: 0.1rem solid #ffffff;
-  border-radius: 0.4rem;
-  box-sizing: border-box;
-  color: #333333;
-  cursor: pointer;
-  display: inline-block;
-  font-size: 1.1rem;
-  font-weight: 700;
-  height: 3.8rem;
-  letter-spacing: 0.1rem;
-  line-height: 3.8rem;
-  padding: 0 1rem;
-  text-align: center;
-  text-decoration: none;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-.button:hover, .button:focus,
-button:hover,
-button:focus,
-input[type='button']:hover,
-input[type='button']:focus,
-input[type='reset']:hover,
-input[type='reset']:focus,
-input[type='submit']:hover,
-input[type='submit']:focus {
-  background-color: #606c76;
-  border-color: #606c76;
-  color: #ffffff;
-  outline: 0;
-}

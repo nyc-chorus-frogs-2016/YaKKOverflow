@@ -1,5 +1,13 @@
-<%= answer.content %>
-<% if answer.editable_by? current_user %>
-  <%= link_to 'Edit', edit_question_answer_path(question, answer) %>
-  <%= link_to 'Delete', question_answer_path(question, answer), method: :delete, data: { confirm: 'Are you sure?'} %>
-<% end %>
+<div class="answer">
+  <div><%= answer.content %> -- <%= answer.user.username %> at <%= answer.updated_at.strftime("%b %-d, '%y at %H:%M")%></div>
+  <% if current_user %>
+    add a response to this answer
+    <%= render partial: '/responses/response_form', locals: {parent: answer}%>
+  <% end %>
+  <% if answer.editable_by? current_user %>
+  <span class="answer-edit-delete"
+    <%= link_to 'Edit', edit_question_answer_path(question, answer) %>
+    <%= link_to 'Delete', question_answer_path(question, answer), method: :delete, data: { confirm: 'Are you sure?'} %>
+  </span>
+  <% end %>
+</div>

@@ -1,5 +1,6 @@
 <h2>Your Answer</h2>
 <%= form_for :answer, :html => {:id => "answer-form"} do |f| %>
+  <%= f.hidden_field :question_id, :value => @question.id %>
   <%= f.label :content %>
   <%= f.text_area :content %>
 

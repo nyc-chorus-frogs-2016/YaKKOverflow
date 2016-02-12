@@ -1,0 +1,34 @@
+<%= form_for @user do |f| %>
+<fieldset>
+  <legend>Register for YaKK Overflow!</legend>
+  <ul>
+    <li>
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+    </li>
+    <li>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </li>
+    <li>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </li>
+    <li>
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
+    </li>
+    <li>
+    <%= f.submit %>
+    </li>
+  </ul>
+</fieldset>
+<% end %>
+
+<% if @user.errors.any? %>
+  <div class="error_report">
+    <% @user.errors.full_messages.each do |msg| %>
+      <%= msg %>
+    <% end %>
+  </div>
+<% end %>

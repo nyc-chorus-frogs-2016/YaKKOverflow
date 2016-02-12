@@ -12,7 +12,9 @@
 <% end %>
 
 
-<%= render @question.answers %>
+<% @question.answers.each do |answer| %>
+  <%= render partial: '/answers/answer', locals: {answer: answer, question: @question}%>
+<% end %>
 
 <h2>Add your answer</h2>
-<%= render partial: '/answers/new', locals: {answer: @answer, question_id: @question.id} %>
+<%= render partial: '/answers/new', locals: {answer: @answer, question: @question} %>

@@ -10,7 +10,7 @@ resources :users, only: [:new, :create]
 
 
   resources :questions do
-    resources :answers, only: [:new, :create]
+    resources :answers, only: [:new, :create, :edit, :destroy]
   end
 end
 

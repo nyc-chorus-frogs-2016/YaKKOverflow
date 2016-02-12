@@ -1,8 +1,10 @@
 <div class="answer">
   <div><%= answer.content %> -- <%= answer.user.username %> at <%= answer.updated_at.strftime("%b %-d, '%y at %H:%M")%></div>
   <% if current_user %>
-    add a response to this answer
-    <%= render partial: '/responses/response_form', locals: {respondable: answer, response: Response.new}%>
+    <div class="response-section">
+      <a href="#" class="add-answer-response">add a response to this answer</a>
+      <div class="answer-response-form"><%= render partial: '/responses/response_form', locals: {respondable: answer, response: Response.new}%></div>
+    </div>
   <% end %>
   <% if answer.editable_by? current_user %>
   <span class="answer-edit-delete"

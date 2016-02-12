@@ -16,23 +16,27 @@
 
 <hr>
 
-<div id="question_response_section">
+<div id="question-response-section">
   <% @question.responses.each do |current_response| %>
     <%= render partial: '/responses/response', locals: {response: current_response}%>
   <%end%>
   <% if current_user %>
-    add a response to this question
-    <%= render partial: '/responses/response_form', locals: {respondable: @question, response: Response.new}%>
+    <a href="#" class="add-question-response">add a response to this question</a>
+    <div id="question-response-form"><%= render partial: '/responses/response_form', locals: {respondable: @question, response: Response.new}%></div>
   <% end %>
 </div>
 
+<div id = "answers-section">
 Answers:
 <ul>
 <% @question.answers.each do |answer| %>
   <li><%= render partial: '/answers/answer', locals: {answer: answer, question: @question}%></li>
 <% end %>
 </ul>
+</div>
 
 <hr>
 
+<div>
 <%= render partial: '/answers/new', locals: {answer: @answer, question: @question} %>
+</div>

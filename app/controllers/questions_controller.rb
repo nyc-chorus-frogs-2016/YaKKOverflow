@@ -16,7 +16,7 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
     if @question.save
       flash.notice = "Question Created"
-      redirect_to question_path(@question)
+      redirect_to questions_path
     else
       render :new
     end
@@ -33,7 +33,7 @@ class QuestionsController < ApplicationController
 
   def update
     @question = Question.find_by(id: params[:id])
-    if @question_params.update(question_params)
+    if @question.update(question_params)
       flash.notice = "Question Updated"
       redirect_to question_path(@question)
     else
@@ -51,7 +51,7 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:content).merge(creator: current_user)
+    params.require(:question).permit(:title, :content).merge(creator: current_user)
   end
 
 end

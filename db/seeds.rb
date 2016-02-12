@@ -1,4 +1,4 @@
-# FIRST SEEDS
+ # FIRST SEEDS
 
 kristie = User.create!({password: "123", username: "Kristie"})
 kb = User.create!({password: "123", username: "KB"})

@@ -1,0 +1,7 @@
+<h1>Questions:</h1>
+Sort: <%= link_to 'Recent', questions_path({order: :recent}) %> | <%= link_to 'Highest Voted', questions_path({order: :highest_voted}) %>
+
+<ul>
+  <%= render @questions %>
+</ul>
+

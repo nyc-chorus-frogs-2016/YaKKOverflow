@@ -24,6 +24,10 @@ ul {
     padding: 0;
 }
 
+
+#question-response-form, .answer-response-form {
+  display: none;
+}
 /*li {
     display: inline;
 }

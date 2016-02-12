@@ -1,17 +1,15 @@
 class ResponsesController < ApplicationController
 
   def create
-    @question = Question.find_by(id: params[:question_id])
-    # @answer = Answer.find_by(id: params[:answer_id])
+    @question = Question.find_by(id: params[:question_id]
 
     new_response = Response.new(response_params)
-
     if new_response.save
       flash.notice = "Response saved!"
-      redirect_to questions_path(@question)
+      redirect_to question_path(@question)
     else
       flash.alert = "Response not saved, sorry!"
-      redirect_to questions_path(@question)
+      redirect_to question_path(@question)
     end
   end
 

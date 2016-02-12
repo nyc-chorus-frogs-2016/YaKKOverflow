@@ -18,6 +18,35 @@ body{
   font-family: 'Open Sans', sans-serif;
 }
 
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: inline;
+}
+
+li a {
+    display: inline;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+
+#logo {
+    padding: 50px 0 50px 0;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    height:70px;
+}
 
 #sign-up-button,
 button,

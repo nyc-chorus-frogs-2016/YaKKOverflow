@@ -12,6 +12,9 @@ resources :users, only: [:new, :create]
   resources :questions do
     resources :answers
   end
+
+  resource :index, only: [:index]
+    root to: "index#index"
 end
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -8,8 +8,8 @@ class SessionsController < ApplicationController
     user = User.find_by(username: params[:username])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      flash.notice = 'Welcome back to YaKK Overflow'
-      redirect_to root_path
+      flash.notice = "Welcome back to YaKK Overflow #{user.username}"
+      redirect_to questions_path
     else
       flash[:error] = 'Login failed'
       render :new
@@ -18,6 +18,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session.clear
-    redirect_to new_session_path
+    redirect_to questions_path
   end
 end

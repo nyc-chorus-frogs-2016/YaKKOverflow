@@ -2,19 +2,29 @@
 <dl>
   <dt>Creator:</dt>
   <dd><%= @question.creator.username %></dd>
-  <dt>Question:</dt>
+  <dt>Question Title:</dt>
+  <dd><%= @question.title %></dd>
+  <dt>Question Content:</dt>
   <dd><%= @question.content %></dd>
 </dl>
+
+
+
 
 <% if @question.editable_by? current_user %>
   <%= link_to 'Edit', edit_question_path(@question) %>
   <%= link_to 'Delete', question_path(@question), method: :delete, data: { confirm: 'Are you sure?'} %>
 <% end %>
 
+<hr>
 
+Answers:
+<ul>
 <% @question.answers.each do |answer| %>
-  <%= render partial: '/answers/answer', locals: {answer: answer, question: @question}%>
+  <li><%= render partial: '/answers/answer', locals: {answer: answer, question: @question}%></li>
 <% end %>
+</ul>
 
+<hr>
 
 <%= render partial: '/answers/new', locals: {answer: @answer, question: @question} %>

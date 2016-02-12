@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
 
-resources :users, only: [:new, :create]
-  resource :session, only: [:new, :create, :destroy]
+  resources :users, only: [:new, :create]
+    resource :session, only: [:new, :create, :destroy]
 
   get '/login' => 'sessions#new'
   get '/register' => 'users#new'
@@ -10,11 +10,16 @@ resources :users, only: [:new, :create]
 
 
   resources :questions do
-    resources :answers
+    resources :responses, only: [:create, :edit, :destroy]
+    resources :answers, only: [:create, :edit, :destroy] do
+      resources :responses, only: [:create, :edit, :destroy]
+    end
   end
 
   resource :index, only: [:index]
     root to: "index#index"
+
+
 end
 
   # The priority is based upon order of creation: first created -> highest priority.

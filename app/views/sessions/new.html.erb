@@ -1,0 +1,17 @@
+<%= form_tag session_path do %>
+<fieldset>
+  <legend>log in to YaKK Overflow</legend>
+  <ls>
+    <%= label_tag :email %>
+    <%= text_field_tag :email %>
+  </ls>
+  <ls>
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+  </ls>
+  <ls>
+    <%= submit_tag 'Log in' %>
+  </ls>
+</fieldset>
+
+<% end %>

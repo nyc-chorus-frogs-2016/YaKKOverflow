@@ -3,9 +3,19 @@
 <head>
   <title>YakOverflow</title>
    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+   <ul>
+      <li><%= link_to 'sign up', register_path %></li>
+      <li><%= link_to 'log in', login_path %></li>
+      <li><%= link_to 'home', root_path %></li>
+   </ul>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+
+
+  <%= link_to image_tag("http://s15.postimg.org/x5ej5aem3/logo.jpg", :border => 0, :alt => '', :title => ''), root_path, :class => 'logo' %>
+
+
 </head>
 <body>
 <% if flash.any?  %>

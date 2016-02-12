@@ -2,7 +2,7 @@
   <div><%= answer.content %> -- <%= answer.user.username %> at <%= answer.updated_at.strftime("%b %-d, '%y at %H:%M")%></div>
   <% if current_user %>
     add a response to this answer
-    <%= render partial: '/responses/response_form', locals: {parent: answer}%>
+    <%= render partial: '/responses/response_form', locals: {respondable: answer, response: Response.new}%>
   <% end %>
   <% if answer.editable_by? current_user %>
   <span class="answer-edit-delete"

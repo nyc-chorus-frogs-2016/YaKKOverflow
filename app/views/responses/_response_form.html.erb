@@ -1,6 +1,6 @@
-<%= form_for :response do |f| %>
-  <%= f.hidden_field :responsable_type, :value => parent.class.name %>
-  <%= f.hidden_field :responsable_id, :value => parent.id %>
+<%= form_for [respondable, response] do |f| %>
+  <%= f.hidden_field :respondable_type, :value => respondable.class.name %>
+  <%= f.hidden_field :respondable_id, :value => respondable.id %>
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <%= f.label :content %>
   <%= f.text_area :content %>

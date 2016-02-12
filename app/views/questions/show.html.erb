@@ -22,7 +22,7 @@
   <%end%>
   <% if current_user %>
     add a response to this question
-    <%= render partial: '/responses/response_form', locals: {parent: @question}%>
+    <%= render partial: '/responses/response_form', locals: {respondable: @question, response: Response.new}%>
   <% end %>
 </div>
 

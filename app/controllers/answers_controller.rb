@@ -1,13 +1,20 @@
 class AnswersController < ApplicationController
 
-  def new
-    @answer = Answer.new
-  end
-
   def create
     @answer = Answer.create(answer_params)
   end
 
+  def edit
+  end
+
+  def show
+  end
+
+  def update
+  end
+
+  def destroy
+  end
 
   private
 

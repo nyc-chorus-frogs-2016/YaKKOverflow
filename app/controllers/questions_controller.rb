@@ -29,6 +29,7 @@ class QuestionsController < ApplicationController
   def show
     @question = Question.find_by(id: params[:id])
     @answer = Answer.new
+    @vote = Vote.new
   end
 
   def update
@@ -47,6 +48,10 @@ class QuestionsController < ApplicationController
     flash.notice = "Question Deleted"
     redirect_to questions_path
   end
+
+
+
+
 
   private
 

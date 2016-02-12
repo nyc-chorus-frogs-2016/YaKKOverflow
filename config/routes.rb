@@ -10,15 +10,21 @@ Rails.application.routes.draw do
 
 
   resources :questions do
+    resource :votes, only: [:create]
     resources :responses, only: [:create, :edit, :destroy]
-    resources :answers, only: [:create, :edit, :destroy]
+    resources :answers, only: [:create, :edit, :destroy, :update] do
+      resource :votes, only: [:create]
+    end
   end
   resources :answers, only:[] do
     resources :responses, only: [:create, :edit, :destroy]
+
   end
 
   resource :index, only: [:index]
     root to: "index#index"
+
+
 
 
 end

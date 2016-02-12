@@ -1,6 +1,6 @@
 <h2>Edit Answer</h2>
 <%= form_for [@question, @answer] do |f| %>
-
+  <%= f.hidden_field :question_id, :value => @question.id %>
   <%= f.label :content %>
   <%= f.text_area :content %>
 

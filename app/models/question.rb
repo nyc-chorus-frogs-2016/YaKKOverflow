@@ -3,6 +3,8 @@ class Question < ActiveRecord::Base
   has_many :responses, as: :respondable
   has_many :answers
   has_many :votes, as: :votable
+  has_many :question_tags
+  has_many :tags, through: :question_tags
 
   def self.by_vote_sum
     all.to_a.sort_by(&:vote_sum).reverse
@@ -30,6 +32,14 @@ class Question < ActiveRecord::Base
       return "up"
     else
       return "down"
+    end
+  end
+
+  def self.search(tag)
+    if Tag.find_by(name: tag)
+      Tag.find_by(name: tag).questions
+    else
+      []
     end
   end
 

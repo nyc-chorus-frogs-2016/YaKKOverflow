@@ -1,3 +1,9 @@
+<%= form_tag questions_path, method: :get do %>
+  <%= text_field_tag :search %>
+  <%= submit_tag "Search by tag" %>
+<% end %>
+
+
 <h1>Questions:</h1>
 Sort: <%= link_to 'Recent', questions_path({order: :recent}) %> | <%= link_to 'Highest Voted', questions_path({order: :highest_voted}) %>
 

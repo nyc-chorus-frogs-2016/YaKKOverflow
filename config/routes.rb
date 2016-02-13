@@ -22,10 +22,10 @@ Rails.application.routes.draw do
   end
 
   resource :index, only: [:index]
-    root to: "index#index"
 
+  resources :tags, only: [:create]
 
-
+  root to: "index#index"
 
 end
 

@@ -6,6 +6,11 @@
   <dd><%= @question.title %></dd>
   <dt>Question Content:</dt>
   <dd><%= @question.content %></dd>
+  <dt>Question Tags:</dt>
+  <dd><% @question.tags.each do |tag| %>
+        <%= tag.name %>
+      <% end %>
+  </dd>
 
   <div>Total Vote: <%=@question.vote_sum %></div>
 

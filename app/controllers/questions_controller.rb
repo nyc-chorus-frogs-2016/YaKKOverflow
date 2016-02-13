@@ -1,7 +1,9 @@
 class QuestionsController < ApplicationController
 
   def index
-    if params[:order] == "highest_voted"
+    if params[:search]
+      @questions = Question.search(params[:search])
+    elsif params[:order] == "highest_voted"
       @questions = Question.by_vote_sum
     else
       @questions = Question.by_recency
@@ -14,7 +16,11 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
+    @tags = params[:tags].split(",").map {|tag| tag.strip}
     if @question.save
+      @tags.each do |tag|
+        @question.tags << Tag.find_or_create_by(name: tag)
+      end
       flash.notice = "Question Created"
       redirect_to questions_path
     else

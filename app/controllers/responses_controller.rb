@@ -1,7 +1,6 @@
 class ResponsesController < ApplicationController
 
   def create
-    binding.pry
     @question = Question.find_by(id: params[:respondable_id])
 
     new_response = Response.new(response_params)

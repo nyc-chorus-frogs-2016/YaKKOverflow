@@ -41,7 +41,8 @@
 <default>NULL</default></row>
 <row name="question_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default></row>
+<default>NULL</default><relation table="questions" row="id" />
+</row>
 <row name="user_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="users" row="id" />
@@ -103,7 +104,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="1139" y="209" name="votes">
+<table x="1313" y="205" name="votes">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -152,3 +153,4 @@
 </key>
 </table>
 </sql>
+

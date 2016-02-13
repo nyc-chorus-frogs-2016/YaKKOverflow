@@ -25,6 +25,9 @@ Rails.application.routes.draw do
 
   resources :tags, only: [:create]
 
+  get 'auth/:provider/callback', to: "sessions#create"
+  delete 'sign_out', to: "sessions#destroy", as: 'sign_out'
+
   root to: "index#index"
 
 end

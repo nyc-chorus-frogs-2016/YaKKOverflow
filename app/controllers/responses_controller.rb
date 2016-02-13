@@ -10,7 +10,6 @@ class ResponsesController < ApplicationController
 
     new_response = Response.new(response_params)
     if new_response.save
-      binding.pry
       flash.notice = "Response saved!"
       redirect_to question_path(question)
     else

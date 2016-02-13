@@ -46,4 +46,12 @@ class Question < ActiveRecord::Base
     end
   end
 
+  def select_best_answer
+    self.has_best_answer = 1
+  end
+
+  def deselect_best_answer
+    self.has_best_answer = 0
+  end
+
 end

@@ -55,3 +55,6 @@ group :test do
   gem 'database_cleaner'
 end
 
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-github'

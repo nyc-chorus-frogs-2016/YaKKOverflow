@@ -10,6 +10,9 @@ class Question < ActiveRecord::Base
     all.to_a.sort_by(&:vote_sum).reverse
   end
 
+  def num_answers
+    self.answers.count
+  end
 
   def self.by_recency
     order(created_at: :desc)

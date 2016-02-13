@@ -1,5 +1,5 @@
 <div class="answer">
-  <div><%= answer.content %> -- <%= answer.user.username %> at <%= answer.updated_at.strftime("%b %-d, '%y at %H:%M")%></div>
+  <div><%= answer.content %> &mdash; <span class="answer-user-time"><%= answer.user.username %> at <%= answer.updated_at.strftime("%b %-d, '%y at %H:%M")%></span></div>
   <% if answer.editable_by? current_user %>
   <span class="answer-edit-delete">
     <%= link_to 'Edit', edit_question_answer_path(question, answer) %>
@@ -7,23 +7,33 @@
   </span>
   <% end %>
 
+
   <div>Total Vote: <%=answer.vote_sum %></div>
 
-  <%if answer.already_voted?(current_user.id)%>
-    Already voted. You voted <%= answer.answer_up_or_down_vote(current_user.id) %>!
-  <% else %>
-    <%= form_for [question, answer, vote] do |f| %>
-      <%= f.hidden_field :value, value: 1%>
-      <%= f.submit "upvote"%>
-    <% end %>
-    <%= form_for [question, answer, vote] do |f| %>
-      <%= f.hidden_field :value, value: -1 %>
-      <%= f.submit "downvote"%>
+  <% if current_user %>
+    <%if answer.already_voted?(current_user.id)%>
+      Already voted. You voted <%= answer.answer_up_or_down_vote(current_user.id) %>!
+    <% else %>
+      <%= form_for [question, answer, vote] do |f| %>
+        <%= f.hidden_field :value, value: 1%>
+        <%= f.submit "upvote"%>
+      <% end %>
+      <%= form_for [question, answer, vote] do |f| %>
+        <%= f.hidden_field :value, value: -1 %>
+        <%= f.submit "downvote"%>
+      <% end %>
     <% end %>
   <% end %>
 
+  <div class="current-answer-responses">
+    <% answer.responses.each do |current_response| %>
+      <%= render partial: '/responses/response', locals: {response: current_response}%>
+    <% end %>
+  </div>
+
+
     <% if current_user %>
-    <div class="response-section">
+    <div class="add-response-section">
       <a href="#" class="add-answer-response">add a response to this answer</a>
       <div class="answer-response-form"><%= render partial: '/responses/response_form', locals: {respondable: answer, response: Response.new}%></div>
     </div>

@@ -1,1 +1,3 @@
-<%=response.content%>
+<div class="response">
+	<%=response.content%> -- <%=response.user.username%> at <%=response.updated_at.strftime(("%b %-d, '%y at %H:%M"))%>
+</div>

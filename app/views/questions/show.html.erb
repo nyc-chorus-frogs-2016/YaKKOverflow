@@ -7,8 +7,12 @@
   <dt>Question Content:</dt>
   <dd><%= @question.content %></dd>
   <dt>Question Tags:</dt>
+
   <dd><% @question.tags.each do |tag| %>
-        <%= tag.name %>
+        <%= form_tag questions_path, method: :get do %>
+          <%= hidden_field_tag :search, tag.name  %>
+          <%= submit_tag tag.name %>
+      <% end %>
       <% end %>
   </dd>
 

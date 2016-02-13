@@ -16,20 +16,25 @@
       <% end %>
   </dd>
 
-  <div>Total Vote: <%=@question.vote_sum %></div>
+  <div>Total Votes: <%=@question.vote_sum %></div>
 
-  <%if @question.already_voted?(current_user.id)%>
-    Already voted. You voted <%= @question.question_up_or_down_vote(current_user.id) %>!
-  <% else %>
-    <%= form_for [@question, @vote] do |f| %>
-      <%= f.hidden_field :value, value: 1%>
-      <%= f.submit "upvote"%>
-    <% end %>
-    <%= form_for [@question, @vote] do |f| %>
-      <%= f.hidden_field :value, value: -1 %>
-      <%= f.submit "downvote"%>
-    <% end %>
-  <% end %>
+  <%if current_user %>
+    <div class="question-vote-section">
+      <%if @question.already_voted?(current_user.id)%>
+        Already voted. You voted <%= @question.question_up_or_down_vote(current_user.id) %>!
+      <% else %>
+        <%= form_for [@question, @vote] do |f| %>
+          <%= f.hidden_field :value, value: 1%>
+          <%= f.submit "upvote"%>
+        <% end %>
+        <%= form_for [@question, @vote] do |f| %>
+          <%= f.hidden_field :value, value: -1 %>
+          <%= f.submit "downvote"%>
+        <% end %>
+      <% end %>
+    </div>
+  <%end%>
+
 
 <div id="question-response-section">
   <% @question.responses.each do |current_response| %>

@@ -17,6 +17,7 @@
 body{
   font-family: 'Open Sans', sans-serif;
   margin: 20px;
+  margin-top: 0px
 }
 
 ul {
@@ -71,14 +72,13 @@ button {
   color: #333333;
   cursor: pointer;
   display: inline-block;
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   font-weight: 400;
-  height: 2.8rem;
+  height: 2rem;
   letter-spacing: 0.1rem;
-  line-height: 2.8rem;
+  line-height: 2rem;
   padding: 0 1rem;
   text-align: center;
-  text-decoration: none;
   text-transform: uppercase;
   white-space: nowrap;
   margin: 5px;
@@ -98,3 +98,32 @@ input[type='submit']:focus {
   outline: 0;
 }
 
+#navbar {
+  margin-top: 15px;
+  float: right;
+  margin-right: 10px;
+
+}
+
+#heading {
+  background-color: #ff700e;
+  height: 47px;
+}
+
+#logo {
+  float: left;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-bottom: 2px;
+  margin-top: 2px;
+  margin-left: 2px;
+  height: 43px;
+}
+
+hr  {
+  clear: both;
+}
+
+#search_form {
+  diplay: block;
+};

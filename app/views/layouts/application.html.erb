@@ -9,23 +9,29 @@
   <%= csrf_meta_tags %>
 
 
-  <%= link_to image_tag("http://s15.postimg.org/x5ej5aem3/logo.jpg", :border => 0, :alt => '', :title => ''), root_path, :class => 'logo' %>
 
 
 </head>
 <body>
 
-  <% if current_user %>
-      Welcome <%= current_user.username %> <%= current_user.name %> |
-       <%= link_to 'Log out', session_path, method: :delete %> | <%= link_to 'Home', questions_path %>
-  <% else %>
-    <ul>
-      <li><%= link_to 'sign up', register_path %></li>
-      <li><%= link_to 'log in', login_path %></li>
-      <li><%= link_to 'home', questions_path %></li>
-      <li><%= link_to "login with facebook", "auth/facebook" %></li>
-   </ul>
-   <% end %>
+  <div id="heading">
+    <div id = "logo">
+      <%= link_to image_tag("http://s15.postimg.org/x5ej5aem3/logo.jpg", size:"200x40"), root_path %>
+    </div>
+    <div id="navbar">
+      <% if current_user %>
+          Welcome <%= current_user.username %> <%= current_user.name %> |
+           <%= link_to 'Log out', session_path, method: :delete %> | <%= link_to 'Home', questions_path %>
+      <% else %>
+            <%= link_to 'home', questions_path %> |
+            <%= link_to 'sign up', register_path %> | Login via:
+            <%= link_to image_tag("yak.png", size: "20x20"), login_path %> or
+            <%= link_to image_tag("facebook.png", size: "20x20"), "auth/facebook" %>
+       <% end %>
+    </div>
+
+   </div>
+
 
 <% if flash.any?  %>
   <div>

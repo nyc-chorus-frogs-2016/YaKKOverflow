@@ -18,23 +18,8 @@ RSpec.describe QuestionsController, type: :controller do
       expect(response).to render_template(:new)
     end
 
-    context "#create" do
-      it "creates a question with valid params" do
-        params = {question: FactoryGirl.attributes_for(:question)}
-        post :create, params
-
-        expect(response).to redirect_to questions_path
-      end
-
-      it "doesn't create a post when params are invalid" do
-        params = {question: FactoryGirl.attributes_for(:question, title: '')}
-        post :create, params
-        expect(response).to redirect_to questions_path
-      end
-    end
-
     context "#update" do
-      it "updates a post with valid params" do
+      it "updates a question with valid params" do
         params = FactoryGirl.create(:question, title: 'Old title')
         expect{ put :update, id: params.id, question: {title: 'New title'}}.to change{params.reload.title}
       end

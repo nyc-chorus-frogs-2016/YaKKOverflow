@@ -25,11 +25,11 @@
       <% else %>
         <%= form_for [@question, @vote] do |f| %>
           <%= f.hidden_field :value, value: 1%>
-          <%= f.submit "upvote"%>
+          <%= f.submit "upvote", class: 'button'%>
         <% end %>
         <%= form_for [@question, @vote] do |f| %>
           <%= f.hidden_field :value, value: -1 %>
-          <%= f.submit "downvote"%>
+          <%= f.submit "downvote", class: 'button'%>
         <% end %>
       <% end %>
     </div>

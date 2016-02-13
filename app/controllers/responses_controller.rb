@@ -18,7 +18,6 @@ class ResponsesController < ApplicationController
     end
   end
 
-
   # def edit
   #   @response = response.find_by(id: params[:id])
   # end

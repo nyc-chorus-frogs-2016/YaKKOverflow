@@ -1,33 +1,24 @@
 require 'rails_helper'
 
-RSpec.describe QuestionsController, type: :controller do
+RSpec.describe ResponsesController, type: :controller do
 
   before(:each) do
     stub_authorize_user!
   end
 
   describe "user" do
-    it "#index" do
-      get :index
-      expect(assigns(:questions)).to eq Question.by_vote_sum || Question.by_recency
-    end
-
-    it "#new" do
-      question = Question.new
-      get :new
-      expect(response).to render_template(:new)
-    end
 
     context "#create" do
-      it "creates a question with valid params" do
-        params = {question: FactoryGirl.attributes_for(:question)}
-        post :create, params
+      it "creates an answer with valid params" do
+      question = Question.create(title: "new post", content: "A great story")
+        answer = question.answers.new(content: "A great answer")
+          post :create, answer
 
-        expect(response).to redirect_to questions_path
+        expect(answer.save).to redirect_to question_path(question)
       end
 
       it "doesn't create a post when params are invalid" do
-        params = {question: FactoryGirl.attributes_for(:question, title: '')}
+        params = {question: FactoryGirl.attributes_for(:question, content: '')}
         post :create, params
         expect(response).to redirect_to questions_path
       end
@@ -46,10 +37,9 @@ RSpec.describe QuestionsController, type: :controller do
     end
 
     it "#destroy" do
-      question = Question.new(title: "new post", content: "A great story")
-      question.save
-      expect{question.destroy}.to change{Question.count}.by(-1)
+      answer = Answer.new(content: "A great story")
+      answer.save
+      expect{answer.destroy}.to change{Answer.count}.by(-1)
     end
   end
 end
-

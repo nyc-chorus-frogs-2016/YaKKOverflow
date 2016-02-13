@@ -12,7 +12,8 @@ users = User.all
   Question.create!({
     title: "#{Faker::Hacker.ingverb}?",
     content: "#{Faker::Hacker.say_something_smart}?",
-    creator: users.sample
+    creator: users.sample,
+    has_best_answer: 0
   })
 end
 
@@ -22,6 +23,7 @@ questions = Question.all
   Answer.create!({
     content: Faker::Hacker.say_something_smart,
     user: users.sample,
-    question: questions.sample
+    question: questions.sample,
+    is_best_answer: 0
   })
 end

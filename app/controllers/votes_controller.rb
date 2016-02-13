@@ -2,7 +2,6 @@ class VotesController < ApplicationController
 
   def create
     @context = context
-    binding.pry
     @vote = @context.votes.new(vote_params)
     @vote.save
     redirect_to questions_path
@@ -11,10 +10,10 @@ class VotesController < ApplicationController
   private
 
   def context
-    if params[:question_id]
-      Question.find(id = params[:question_id])
-    else
+    if params[:answer_id]
       Answer.find(id = params[:answer_id])
+    else
+      Question.find(id = params[:question_id])
     end
   end
 

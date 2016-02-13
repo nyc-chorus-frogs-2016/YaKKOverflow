@@ -1,7 +1,9 @@
 class ResponsesController < ApplicationController
 
   def create
-    @question = Question.find_by(id: params[:question_id])
+    binding.pry
+    @question = Question.find_by(id: params[:respondable_id])
+
     new_response = Response.new(response_params)
     if new_response.save
       flash.notice = "Response saved!"

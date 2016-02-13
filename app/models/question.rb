@@ -4,8 +4,8 @@ class Question < ActiveRecord::Base
   has_many :answers
   has_many :votes, as: :votable
 
-  def self.by_votes
-     # tdb
+  def self.by_vote_sum
+    all.to_a.sort_by(&:vote_sum).reverse
   end
 
 

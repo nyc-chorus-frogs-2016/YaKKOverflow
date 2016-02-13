@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
 
   def index
     if params[:order] == "highest_voted"
-      @questions = Question.by_votes
+      @questions = Question.by_vote_sum
     else
       @questions = Question.by_recency
     end

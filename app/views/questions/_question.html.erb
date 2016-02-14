@@ -1,8 +1,44 @@
-<li>
-	<div class='question-details'>
-		<%= question.vote_sum %> Votes | <%= question.num_answers %> Answers | <%= link_to question.title, question_path(question) %>
-		<div class="asker-and-time">
-		asked by <%=question.creator.name%> at <%=question.updated_at.strftime("%b %-d, '%y at %H:%M")%>
-		</div>
-	</div>
-</li>
+<div class="question-details">
+  	<table>
+      <tr>
+        <td>
+            <div class="cp">
+              <div class="votes">
+                <div class="votes-count">
+        		      <%= question.vote_sum %>
+                </div>
+                <div>
+                  Votes
+                </div>
+              </div>
+
+              <div class="answers">
+                <div class="answers-count">
+                  <%= question.num_answers %>
+                </div>
+                <div>
+                  Answers
+                </div>
+              </div>
+            </div>
+          </td>
+
+          <td class="question-td">
+            <div class="summary">
+              <h4 class="question-title"><%= link_to question.title, question_path(question) %></h4>
+
+              <div class = "tags">
+                <% question.tags.each do |tag| %>
+                  <%= link_to tag.name, questions_path({search: tag.name}), class: "post-tag"%>
+                <% end %>
+              </div>
+
+          		<div class="asker-and-time">
+          		  asked by <%=question.creator.name%> at <%=question.updated_at.strftime("%b %-d, '%y at %H:%M")%>
+          		</div>
+
+            </div>
+          <td>
+      </tr>
+    </table>
+</div>

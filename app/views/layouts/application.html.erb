@@ -17,30 +17,49 @@
     </div>
     <div id="navbar">
       <% if current_user %>
-          Welcome <%= current_user.name %> |
-           <%= link_to 'Log out', session_path, method: :delete %> | <%= link_to 'Home', questions_path %>
+          Welcome <%= current_user.name %>
+          <% if @auth  %>
+            <%= image_tag(@auth['info']['image'], size:"25x25") %>
+          <% end %>
+           | <%= link_to 'Log out', session_path, method: :delete %> |
       <% else %>
-            <%= link_to 'home', questions_path %> |
-            <%= link_to 'sign up', register_path %> | Login via:
-            <%= link_to image_tag("yak.png", size: "20x20"), login_path %> or
-            <%= link_to image_tag("facebook.png", size: "20x20"), "auth/facebook" %> or
-            <%= link_to image_tag("github.png", size: "20x20"), "auth/github" %> or
-            <%= link_to image_tag("twitter.png", size: "20x20"), "auth/twitter" %>
+            Login via:
+            <%= link_to image_tag("yak.png", size: "25x25"), login_path %> or
+            <%= link_to image_tag("facebook.png", size: "25x25"), "/auth/facebook" %> or
+            <%= link_to image_tag("github.png", size: "25x25"), "/auth/github" %> or
+            <%= link_to image_tag("twitter.png", size: "25x25"), "/auth/twitter" %> |
+            <%= link_to 'Register', register_path %> |
        <% end %>
+            <%= link_to 'Home', questions_path %>
+    </div>
+
+    <div>
+      <div id="add-question-bar">
+        <%= link_to 'Add a Question', new_question_path, class: "add-question-link" %>
+      </div>
+      <div id="search-bar">
+        <%= form_tag questions_path, method: :get do %>
+          <%= text_field_tag :search, nil, placeholder: "Search by Tag" %>
+          <%= submit_tag "Go" %>
+        <% end %>
+      </div>
     </div>
 
    </div>
 
-
-<% if flash.any?  %>
-  <div>
-    <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, class: "flash-#{name}" %>
+  <div id="content">
+    <% if flash.any?  %>
+      <div>
+        <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, class: "flash-#{name}" %>
+        <% end %>
+      </div>
     <% end %>
   </div>
-<% end %>
 
-<%= yield %>
+  <div>
+    <%= yield %>
+  </div>
 
 </body>
 </html>

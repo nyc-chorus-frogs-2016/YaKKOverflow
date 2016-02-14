@@ -12,10 +12,10 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to questions_path
     else
-      user = User.where("uid = ? AND provider = ?", params[:uid], "yakkoverflow")
+      user = User.where("uid = ? AND provider = ?", params[:uid], "yakkoverflow")[0]
       if user && user.authenticate(params[:password])
         session[:user_id] = user.id
-        flash.notice = "Welcome back to YaKK Overflow #{user.uid}"
+        flash.notice = "Welcome back to YaKK Overflow #{user.name}"
         redirect_to questions_path
       else
         flash[:error] = 'Login failed'

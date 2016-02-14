@@ -25,7 +25,7 @@ class Answer < ActiveRecord::Base
   end
 
   def select_as_best_answer
-    if !self.question.has_best_answer == 0
+    if self.question.has_best_answer == 0
       self.is_best_answer = 1
       self.question.has_best_answer = 1
     end

@@ -6,8 +6,6 @@ yi = User.create!({password: "123", uid: "yilu1021", provider: "yakkoverflow", n
 
 users = User.all
 
-
-
 20.times do
   Question.create!({
     title: "#{Faker::Hacker.ingverb}?",

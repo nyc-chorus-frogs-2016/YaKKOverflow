@@ -24,15 +24,14 @@ class Answer < ActiveRecord::Base
     end
   end
 
-  def select_as_best_answer
-    if !self.question.has_best_answer
+  def mark_as_best_answer(direction)
+    if direction == true && self.question.has_best_answer ==0
       self.is_best_answer = 1
+      self.question.has_best_answer = 1
+    elsif direction == false
+      self.is_best_answer = 0
+      self.question.has_best_answer = 0
     end
-  end
-
-  def deselect_as_best_answer
-    self.is_best_answer = 0
-    self.question.has_best_answer = 0
   end
 
 end

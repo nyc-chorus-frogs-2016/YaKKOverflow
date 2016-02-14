@@ -58,7 +58,7 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:title, :content).merge(creator: current_user)
+    params.require(:question).permit(:title, :content, :has_best_answer).merge(creator: current_user)
   end
 
 end

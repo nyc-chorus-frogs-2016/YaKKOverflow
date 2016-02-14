@@ -17,6 +17,9 @@ Rails.application.routes.draw do
     end
   end
   resources :answers, only:[] do
+    member do
+      patch :mark_best_answer
+    end
     resources :responses, only: [:create, :edit, :destroy]
 
   end

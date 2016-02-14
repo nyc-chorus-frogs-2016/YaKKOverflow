@@ -1,16 +1,21 @@
-<div>
-  <%= form_tag questions_path, method: :get, id: "search_form" do %>
-    <%= text_field_tag :search %>
-    <%= submit_tag "Search by tag", class: "button" %>
-  <% end %>
-</div>
-
-<h1>Questions:</h1>
-Sort: <%= link_to 'Recent', questions_path({order: :recent}) %> | <%= link_to 'Highest Voted', questions_path({order: :highest_voted}) %>
-
-<ul>
-  <%= render @questions %>
-</ul>
+<table>
+  <tr >
+    <td  id="table-head">
+      <div>
+          <h1 id="h-question">Questions</h1>
+          <div id="tabs">
+            Sort:
+            <%= link_to 'Recent', questions_path({order: :recent}), class: "sort-criteria"%> |
+            <%= link_to 'Highest Voted', questions_path({order: :highest_voted}), class: "sort-criteria"%>
+          </div>
+        </div>
+      </td>
+  </tr>
+</table>
 
 <hr>
-<%= link_to 'Add a new question', new_question_path %>
+
+
+  <%= render @questions %>
+
+

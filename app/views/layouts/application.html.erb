@@ -8,9 +8,6 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 
-
-
-
 </head>
 <body>
 
@@ -20,13 +17,15 @@
     </div>
     <div id="navbar">
       <% if current_user %>
-          Welcome <%= current_user.username %> <%= current_user.name %> |
+          Welcome <%= current_user.name %> |
            <%= link_to 'Log out', session_path, method: :delete %> | <%= link_to 'Home', questions_path %>
       <% else %>
             <%= link_to 'home', questions_path %> |
             <%= link_to 'sign up', register_path %> | Login via:
             <%= link_to image_tag("yak.png", size: "20x20"), login_path %> or
-            <%= link_to image_tag("facebook.png", size: "20x20"), "auth/facebook" %>
+            <%= link_to image_tag("facebook.png", size: "20x20"), "auth/facebook" %> or
+            <%= link_to image_tag("github.png", size: "20x20"), "auth/github" %> or
+            <%= link_to image_tag("twitter.png", size: "20x20"), "auth/twitter" %>
        <% end %>
     </div>
 

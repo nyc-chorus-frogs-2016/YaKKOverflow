@@ -5,29 +5,24 @@ class SessionsController < ApplicationController
   end
 
   def create
-
     if request.env["omniauth.auth"]
       auth = request.env["omniauth.auth"]
       session[:omniauth] = auth.except('extra')
       user = User.sign_in_from_omniauth(auth)
       session[:user_id] = user.id
-      flash.notice = "You signed in with facebook"
       redirect_to questions_path
     else
-      user = User.find_by(username: params[:username])
+      user = User.where("uid = ? AND provider = ?", params[:uid], "yakkoverflow")[0]
       if user && user.authenticate(params[:password])
         session[:user_id] = user.id
-        flash.notice = "Welcome back to YaKK Overflow #{user.username}"
+        flash.notice = "Welcome back to YaKK Overflow #{user.name}"
         redirect_to questions_path
       else
         flash[:error] = 'Login failed'
         render :new
       end
     end
-
   end
-
-
 
   def destroy
     session.clear

@@ -2,7 +2,7 @@
 	<div class='question-details'>
 		<%= question.vote_sum %> Votes | <%= question.num_answers %> Answers | <%= link_to question.title, question_path(question) %>
 		<div class="asker-and-time">
-		asked by <%=question.creator.username%> at <%=question.updated_at.strftime("%b %-d, '%y at %H:%M")%>
+		asked by <%=question.creator.name%> at <%=question.updated_at.strftime("%b %-d, '%y at %H:%M")%>
 		</div>
 	</div>
 </li>

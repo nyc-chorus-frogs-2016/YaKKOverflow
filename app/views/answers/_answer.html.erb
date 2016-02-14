@@ -1,5 +1,5 @@
 <div class="answer">
-  <div><%= answer.content %> &mdash; <span class="answer-user-time"><%= answer.user.username %> at <%= answer.updated_at.strftime("%b %-d, '%y at %H:%M")%></span></div>
+  <div><%= answer.content %> &mdash; <span class="answer-user-time"><%= answer.user.name %> at <%= answer.updated_at.strftime("%b %-d, '%y at %H:%M")%></span></div>
   <% if answer.editable_by? current_user %>
   <span class="answer-edit-delete">
     <%= link_to 'Edit', edit_question_answer_path(question, answer) %>

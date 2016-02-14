@@ -1,8 +1,8 @@
  # FIRST SEEDS
 
-kristie = User.create!({password: "123", username: "Kristie"})
-kb = User.create!({password: "123", username: "KB"})
-yi = User.create!({password: "123", username: "yilu1021"})
+kristie = User.create!({password: "123", uid: "Kristie", provider: "yakkoverflow", name: "Kristie Chow"})
+kb = User.create!({password: "123", uid: "KB", provider: "yakkoverflow", name: "Kaybi"})
+yi = User.create!({password: "123", uid: "yilu1021", provider: "yakkoverflow", name: "Yi Lu"})
 
 users = User.all
 

@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :questions
   has_many :answers
 
-  # validates :username, presence: true, uniqueness: true
+  # validates :uid, presence: true, uniqueness: true
 
   def self.sign_in_from_omniauth(auth)
     find_by(provider: auth['provider'], uid: auth['uid']) || create_user_from_omniauth(auth)

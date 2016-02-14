@@ -12,20 +12,17 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to questions_path
     else
-      user = User.find_by(username: params[:username])
+      user = User.where("uid = ? AND provider = ?", params[:uid], "yakkoverflow")
       if user && user.authenticate(params[:password])
         session[:user_id] = user.id
-        flash.notice = "Welcome back to YaKK Overflow #{user.username}"
+        flash.notice = "Welcome back to YaKK Overflow #{user.uid}"
         redirect_to questions_path
       else
         flash[:error] = 'Login failed'
         render :new
       end
     end
-
   end
-
-
 
   def destroy
     session.clear

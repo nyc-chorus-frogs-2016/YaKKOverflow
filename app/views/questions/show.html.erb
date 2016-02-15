@@ -6,22 +6,21 @@
     <tr>
       <td id="vote-container-td">
         <div id="vote-conatiner">
-          <%if current_user %>
             <div class="question-vote-section">
-              <%if @question.already_voted?(current_user.id)%>
-                <%if @question.question_up_or_down_vote(current_user.id) == "up"%>
-                  <%= submit_tag "↑", class: 'arrow color'%>
-                  <div id="vote-sum">
-                    <%=@question.vote_sum %>
-                  </div>
-                  <%= submit_tag "↓", class: 'arrow'%>
-                <% else %>
-                  <%= submit_tag "↑", class: 'arrow'%>
-                  <div id="vote-sum">
-                    <%=@question.vote_sum %>
-                  </div>
-                  <%= submit_tag "↓", class: 'arrow color'%>
-                <% end %>
+                <%if current_user && @question.already_voted?(current_user.id)%>
+                  <%if @question.question_up_or_down_vote(current_user.id) == "up"%>
+                    <%= submit_tag "↑", class: 'arrow color'%>
+                    <div id="vote-sum">
+                      <%=@question.vote_sum %>
+                    </div>
+                    <%= submit_tag "↓", class: 'arrow'%>
+                  <% else %>
+                    <%= submit_tag "↑", class: 'arrow'%>
+                    <div id="vote-sum">
+                      <%=@question.vote_sum %>
+                    </div>
+                    <%= submit_tag "↓", class: 'arrow color'%>
+                  <% end %>
               <% else %>
                 <%= form_for [@question, @vote] do |f| %>
                   <%= f.hidden_field :value, value: 1%>
@@ -36,7 +35,6 @@
                 <% end %>
               <% end %>
             </div>
-          <%end%>
         </div>
       </td>
       <td id="question-content-td">

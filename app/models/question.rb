@@ -1,9 +1,9 @@
 class Question < ActiveRecord::Base
   belongs_to :creator, class_name: "User"
-  has_many :responses, as: :respondable
-  has_many :answers
-  has_many :votes, as: :votable
-  has_many :question_tags
+  has_many :responses, as: :respondable, dependent: :destroy
+  has_many :answers, dependent: :destroy
+  has_many :votes, as: :votable, dependent: :destroy
+  has_many :question_tags, dependent: :destroy
   has_many :tags, through: :question_tags
 
   def self.by_vote_sum

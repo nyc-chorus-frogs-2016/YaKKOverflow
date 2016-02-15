@@ -6,21 +6,33 @@
   </ul>
 <% end %>
 
+<table>
 <%= form_for @question do |f| %>
   <% [:title, :content].each do |field|  %>
-    <div>
+  <tr>
+    <td>
       <%= f.label field %>
+    </td>
+    <td>
       <%= f.text_field field %>
-    </div>
+    </td>
+  </tr>
   <% end %>
-
-<div>
-  <%= label_tag :tags, "Add Tags (Comma separated)" %>
-  <%= text_area_tag :tags, nil, cols: "50", rows: "5" %>
-</div>
-
-<div>
-  <%= f.hidden_field :has_best_answer, :value => 0 %>
-  <%= f.submit %>
-</div>
-<% end %>
+  <tr>
+    <td>
+      <%= label_tag :tags, "Add Tags (Comma separated)" %>
+    </td>
+    <td>
+      <%= text_area_tag :tags, nil, cols: "50", rows: "5" %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= f.hidden_field :has_best_answer, :value => 0 %>
+    </td>
+    <td>
+      <%= f.submit %>
+    </td>
+  </tr>
+  <% end %>
+</table>

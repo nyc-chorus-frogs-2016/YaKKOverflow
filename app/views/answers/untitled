@@ -1,0 +1,25 @@
+<div class="answer">
+  <% if answer.is_best_answer == 1%>
+    <div class ='best-answer'>
+      this has been selected as the best answer by <%= answer.question.creator.name %>
+    </div>
+  <% end %>
+  <% if current_user && answer.question.creator == current_user %>
+    <div class='select-or-deselect-best-answer'>
+      <% if answer.question.has_best_answer == 0 %>
+        <% if answer.is_best_answer == 0 %>
+          <%= form_for [answer], :url => mark_best_answer_answer_path(answer) do |f| %>
+            <%= f.hidden_field :is_best_answer, :value => 1 %>
+            <%= f.submit 'Select as Best Answer', class: 'button'%>
+          <% end %>
+        <% end %>
+      <% else %>
+        <% if answer.is_best_answer == 1 %>
+          <%= form_for [answer], :url => mark_best_answer_answer_path(answer) do |f| %>
+            <%= f.hidden_field :is_best_answer, :value => 0 %>
+            <%= f.submit 'Deselect as Best Answer', class: 'button'%>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>

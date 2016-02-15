@@ -1,10 +1,12 @@
-<h2>Add an Answer</h2>
-<%= form_for [question, answer] do |f| %>
-  <%= f.hidden_field :is_best_answer, :value => 0 %>
-  <%= f.label :content %>
-  <%= f.text_area :content %>
 
-  <%= f.submit 'Post Your Answer', class: 'button'%>
-<% end %>
+  <h2 id="add-an-answer">Add an Answer:</h2>
+  <hr>
+  <%= form_for [question, answer] do |f| %>
+    <%= f.hidden_field :is_best_answer, :value => 0 %>
+    <%= f.hidden_field :question_id, :value => question.id %>
+    <%= f.text_area :content %>
+
+    <%= f.submit 'Post', class: 'button'%>
+  <% end %>
 
 

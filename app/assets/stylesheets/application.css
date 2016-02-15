@@ -274,7 +274,7 @@ input {
 
 #vote-container-td {
   vertical-align: top;
-  padding-right: 10px;
+  padding-right: 30px;
 }
 
 #question-content-td, #answer-content-td {
@@ -309,4 +309,19 @@ input {
 
 .second-td {
  border-top: 1px solid gray;
+}
+
+.best-answer {
+  width: 69px;
+}
+
+.select, .deselect {
+font-size: 10px;
+background-color: #ff700e;
+color: white;
+}
+
+#add-an-answer {
+  margin-bottom: 1px;
+  font-size: 1.3em;
 }

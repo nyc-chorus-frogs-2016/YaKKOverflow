@@ -1,5 +1,6 @@
 class VotesController < ApplicationController
 
+
   def create
     @context = context
     @vote = @context.votes.new(vote_params)

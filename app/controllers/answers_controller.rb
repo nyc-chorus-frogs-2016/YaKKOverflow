@@ -36,7 +36,6 @@ class AnswersController < ApplicationController
         answer.mark_as_best_answer(false)
       end
       if answer.save && answer.question.save
-        binding.pry
         flash.notice = "You've selected or deselected a best answer."
         redirect_to question_path(answer.question)
       else

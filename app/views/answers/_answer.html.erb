@@ -1,0 +1,80 @@
+<td id="vote-container-td">
+  <div id="vote-conatiner">
+      <div class="answer-vote-section">
+          <%if current_user && answer.already_voted?(current_user.id)%>
+
+            <%if answer.answer_up_or_down_vote(current_user.id) == "up"%>
+              <%= submit_tag "↑", class: 'arrow color'%>
+              <div id="vote-sum">
+                <%=answer.vote_sum %>
+              </div>
+              <%= submit_tag "↓", class: 'arrow'%>
+            <% else %>
+              <%= submit_tag "↑", class: 'arrow'%>
+              <div id="vote-sum">
+                <%=answer.vote_sum %>
+              </div>
+              <%= submit_tag "↓", class: 'arrow color'%>
+            <% end %>
+
+        <% else %>
+          <%= form_for [question, answer, vote] do |f| %>
+            <%= f.hidden_field :value, value: 1%>
+            <%= f.submit "↑", class: 'arrow'%>
+          <% end %>
+          <div id="vote-sum">
+            <%=answer.vote_sum %>
+          </div>
+          <%= form_for [question, answer, vote] do |f| %>
+            <%= f.hidden_field :value, value: -1 %>
+            <%= f.submit "↓", class: 'arrow'%>
+          <% end %>
+        <% end %>
+      </div>
+
+
+  </div>
+</td>
+
+<td id="answer-content-td">
+    <div id="answer-content">
+      <%= answer.content %>
+
+      <div id="best-answer">
+        <% if answer.is_best_answer == 1%>
+          <div class ='best-answer'>
+          Best Answer
+          </div>
+        <% end %>
+        <% if current_user && answer.question.creator == current_user %>
+            <% if question.has_best_answer == 0 %>
+                <%= form_for [answer], :url => mark_best_answer_answer_path(answer) do |f| %>
+                  <%= f.hidden_field :is_best_answer, :value => 1 %>
+                  <%= f.submit 'Select as Best Answer', class: 'deselect'%>
+              <% end %>
+            <% else %>
+              <% if answer.is_best_answer == 1 %>
+                <%= form_for [answer], :url => mark_best_answer_answer_path(answer) do |f| %>
+                  <%= f.hidden_field :is_best_answer, :value => 0 %>
+                  <%= f.submit 'Deselect as Best Answer', class: 'select'%>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+
+
+
+
+    </div>
+    <div id = "edit-delete">
+      <% if answer.editable_by? current_user %>
+        <%= link_to 'Edit', edit_question_answer_path(question, answer) %> |
+        <%= link_to 'Delete', question_answer_path(question, answer), method: :delete, data: { confirm: 'Are you sure?'} %>
+      <% end %>
+      <%=answer.user.name%> at <%=answer.updated_at.strftime(("%b %-d, '%y at %H:%M"))%>
+    </div>
+</td>
+

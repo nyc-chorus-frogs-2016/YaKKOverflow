@@ -1,0 +1,21 @@
+<table>
+  <tr >
+    <td  id="table-head">
+      <div>
+          <h1 id="h-question">Questions</h1>
+          <div id="tabs">
+            Sort:
+            <%= link_to 'Recent', questions_path({order: :recent}), class: "sort-criteria"%> |
+            <%= link_to 'Highest Voted', questions_path({order: :highest_voted}), class: "sort-criteria"%>
+          </div>
+        </div>
+      </td>
+  </tr>
+</table>
+
+<hr>
+
+
+  <%= render @questions %>
+
+

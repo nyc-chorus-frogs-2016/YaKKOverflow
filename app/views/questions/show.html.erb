@@ -1,0 +1,110 @@
+<h2 id="question-title"><%= @question.title %></h2>
+<hr>
+
+<div id="question-container">
+  <table>
+    <tr>
+      <td id="vote-container-td">
+        <div id="vote-conatiner">
+            <div class="question-vote-section">
+                <%if current_user && @question.already_voted?(current_user.id)%>
+                  <%if @question.question_up_or_down_vote(current_user.id) == "up"%>
+                    <%= submit_tag "↑", class: 'arrow color'%>
+                    <div id="vote-sum">
+                      <%=@question.vote_sum %>
+                    </div>
+                    <%= submit_tag "↓", class: 'arrow'%>
+                  <% else %>
+                    <%= submit_tag "↑", class: 'arrow'%>
+                    <div id="vote-sum">
+                      <%=@question.vote_sum %>
+                    </div>
+                    <%= submit_tag "↓", class: 'arrow color'%>
+                  <% end %>
+              <% else %>
+                <%= form_for [@question, @vote] do |f| %>
+                  <%= f.hidden_field :value, value: 1%>
+                  <%= f.submit "↑", class: 'arrow'%>
+                <% end %>
+                <div id="vote-sum">
+                  <%=@question.vote_sum %>
+                </div>
+                <%= form_for [@question, @vote] do |f| %>
+                  <%= f.hidden_field :value, value: -1 %>
+                  <%= f.submit "↓", class: 'arrow'%>
+                <% end %>
+              <% end %>
+            </div>
+        </div>
+      </td>
+      <td id="question-content-td">
+          <div id="question-content">
+            <%= @question.content %>
+          </div>
+          <div class = "tags">
+            <% @question.tags.each do |tag| %>
+              <%= link_to tag.name, questions_path({search: tag.name}), class: "post-tag"%>
+            <% end %>
+          </div>
+          <div id = "edit-delete">
+            <% if @question.editable_by? current_user %>
+              <%= link_to 'Edit', edit_question_path(@question) %> |
+              <%= link_to 'Delete', question_path(@question), method: :delete, data: { confirm: 'Are you sure?'} %>
+            <% end %>
+              <%=@question.creator.name%> at <%=@question.updated_at.strftime(("%b %-d, '%y at %H:%M"))%>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td class = "second-td">
+        <div id="question-response-section">
+          <% if current_user %>
+            <a href="#" class="add-question-response">Add a Response</a>
+            <div id="question-response-form">
+              <%= render partial: '/responses/response_form', locals: {respondable: @question, response: Response.new}%>
+            </div>
+          <% end %>
+          <% @question.responses.each do |current_response| %>
+            <%= render partial: '/responses/response', locals: {response: current_response}%>
+          <%end%>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<hr>
+
+<h1 id="x-answers"><%= @question.answers.count %> Answers:</h1>
+<hr>
+
+<div id = "answers-section">
+  <table>
+    <% @question.answers.each do |answer| %>
+      <tr class="answer-tr2">
+        <%= render partial: '/answers/answer', locals: {answer: answer, question: @question, vote: @vote}%>
+      </tr>
+      <tr class="answer-tr">
+        <td></td>
+        <td class="second-td">
+          <div id="answer-response-section" >
+            <% if current_user %>
+              <a href="#" class="add-answer-response">Add a Response</a>
+              <div id="answer-response-form">
+                <%= render partial: '/responses/response_form', locals: {respondable: answer, response: Response.new}%>
+              </div>
+            <% end %>
+            <% answer.responses.each do |current_response| %>
+              <%= render partial: '/responses/response', locals: {response: current_response}%>
+            <%end%>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<div>
+<%= render partial: '/answers/new', locals: {answer: @answer, question: @question} %>
+</div>

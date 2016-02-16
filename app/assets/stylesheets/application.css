@@ -13,3 +13,315 @@
  *= require_tree .
  *= require_self
  */
+
+body{
+  font-family: 'Open Sans', sans-serif;
+  margin: 20px;
+  margin-top: 0px
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+#question-response-form, #answer-response-form {
+  display: none;
+}
+
+
+#logo {
+    padding: 50px 0 50px 0;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    height:70px;
+}
+
+#index-subheader{
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  font-size: 2em;
+}
+
+#index-body{
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  padding: 0px 50px 0px 50px;
+}
+
+#header{
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  font-style: italic;
+  font-size: 2em;
+  text-decoration: none
+}
+
+.right {
+  position: absolute;
+    right: 0px;
+}
+
+  /*.button,
+  button {
+    background-color: #eeeeee;
+    border: 0.1rem solid #ffffff;
+    border-radius: 0.3rem;
+    color: #333333;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 0.6rem;
+    font-weight: 400;
+    height: 2rem;
+    letter-spacing: 0.1rem;
+    line-height: 2rem;
+    padding: 0 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin: 5px;
+  }
+  .button:hover, .button:focus,
+  button:hover,
+  button:focus,
+  input[type='button']:hover,
+  input[type='button']:focus,
+  input[type='reset']:hover,
+  input[type='reset']:focus,
+  input[type='submit']:hover,
+  input[type='submit']:focus {
+    background-color: #606c76;
+    border-color: #606c76;
+    color: #ffffff;
+    outline: 0;
+  }*/
+
+#navbar {
+  margin-top: 15px;
+  float: right;
+  margin-right: 10px;
+  font-weight: bold;
+
+}
+
+#heading {
+  background-color: #ff700e;
+  height: 50px;
+}
+
+#logo {
+  float: left;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-bottom: 2px;
+  margin-top: 2px;
+  margin-left: 2px;
+  height: 43px;
+}
+
+hr  {
+  clear: both;
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+
+#search-bar {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    float:right;
+    clear:right;
+}
+
+input:focus {
+  border: 1px solid rgba(81, 203, 238, 1);
+}
+
+#content {
+  clear: both;
+}
+
+#h-question {
+  margin: 0;
+  font-weight: 400;
+  line-height: 1.3;
+  font-size: 18px;
+  float: left;
+}
+
+#tabs {
+ float: right;
+ margin-top: 4px;
+}
+
+.question-details {
+  border-bottom: 1px solid #eaebec;
+}
+
+.cp {
+  float: left;
+  vertical-align: top;
+}
+
+.votes, .answers {
+  display: inline-block;
+  text-align: center;
+  margin-right: 20px;
+  font-size: 10px;
+}
+
+.votes-count, .answers-count {
+
+  text-align: center;
+}
+
+.summary {
+
+}
+
+.question-title {
+  line-height: 1.3;
+  margin: 0;
+  font-weight: 600;
+  margin-bottom: .15em;
+}
+
+.tags {
+  float: left;
+}
+
+.asker-and-time {
+  float: right;
+}
+
+.question-td {
+  width:1200px;
+}
+
+.post-tag {
+  color: #39739d;
+  font-size: 12px;
+  white-space: nowrap;
+  background: #E1ECF4;
+  border: 1px solid #E1ECF4;
+  display: inline-block;
+  margin: 2px 2px 2px 0;
+  border-radius: 0;
+}
+
+.sort-criteria {
+  text-decoration: none;
+  font-size: 15px;
+}
+
+input {
+  border-style: solid;
+   border-width: 1px;
+  border-color: #ff700e;
+}
+
+#subheader {
+  display: block;
+    border-style: solid;
+   border-width: 1px;
+  border-color: #ff700e;
+}
+
+#table-head {
+  background-color: #ffedcc;
+  width: 1350px;
+  height: 30px;
+}
+
+#add-question-bar {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    float:left;
+    clear: left;
+    background-color: #ff700e;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.add-question-link {
+  text-decoration: none;
+  color: white;
+
+}
+
+#question-title {
+  margin-bottom: 1px;
+  color: blue;
+}
+
+#vote-conatiner {
+
+}
+
+#question-content, #answer-content {
+  width: 716px
+}
+
+.arrow {
+  font-size: 10px;
+}
+
+#vote-sum {
+ font-size: 10px;
+ text-align: center;
+}
+
+#vote-container-td {
+  vertical-align: top;
+  padding-right: 30px;
+}
+
+#question-content-td, #answer-content-td {
+  vertical-align: top;
+  width: 1600px;
+  padding-bottom: 10px
+}
+
+#edit-delete {
+  float: right;
+  font-size: 13px;
+}
+
+#question-response-section, #answer-response-section {
+  margin-left: 30px;
+  font-size: 13px;
+  float: left;
+}
+
+.color {
+  background-color: red;
+}
+
+#x-answers {
+  margin-bottom: 0px;
+  font-size: 1.3em;
+}
+
+.answer-tr {
+  border-bottom: 1px solid gray;
+}
+
+.second-td {
+ border-top: 1px solid gray;
+}
+
+.best-answer {
+  width: 69px;
+}
+
+.select, .deselect {
+font-size: 10px;
+background-color: #ff700e;
+color: white;
+}
+
+#add-an-answer {
+  margin-bottom: 1px;
+  font-size: 1.3em;
+}

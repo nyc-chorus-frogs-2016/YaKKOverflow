@@ -1,4 +1,40 @@
 Rails.application.routes.draw do
+
+
+  resources :users, only: [:new, :create]
+    resource :session, only: [:new, :create, :destroy]
+
+  get '/login' => 'sessions#new'
+  get '/register' => 'users#new'
+  get '/logout' => 'session#destroy'
+
+
+  resources :questions do
+    resource :votes, only: [:create]
+    resources :responses, only: [:create, :edit, :destroy]
+    resources :answers, only: [:create, :edit, :destroy, :update] do
+      resource :votes, only: [:create]
+    end
+  end
+  resources :answers, only:[] do
+    member do
+      patch :mark_best_answer
+    end
+    resources :responses, only: [:create, :edit, :destroy]
+
+  end
+
+  resource :index, only: [:index]
+
+  resources :tags, only: [:create]
+
+  get 'auth/:provider/callback', to: "sessions#create"
+  delete 'sign_out', to: "sessions#destroy", as: 'sign_out'
+
+  root to: "index#index"
+
+end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -53,4 +89,4 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end
+

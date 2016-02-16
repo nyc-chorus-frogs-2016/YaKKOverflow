@@ -38,6 +38,8 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'launchy'
   gem "rspec-rails"
+  gem "factory_girl_rails"
+  gem "faker"
 end
 
 group :development do
@@ -50,7 +52,9 @@ end
 
 group :test do
   gem 'shoulda-matchers'
-  gem 'factory_girl_rails'
-  gem 'faker'
   gem 'database_cleaner'
 end
+
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-github'
